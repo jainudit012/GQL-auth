@@ -40,7 +40,7 @@ class Header extends Component {
         return (
             <div>
                 <nav>
-                    <div className="nav-container">
+                    <div className="nav-container container">
                         <Link to="/" className="brand-logo left">Home</Link>
                         <ul className="right">
                             {this.renderButtons()}
