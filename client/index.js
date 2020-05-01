@@ -8,6 +8,7 @@ import AppComponent from './components/App'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import DashBoard from './components/Dashboard'
+import requireAuth from './components/requireAuth'
 
 const client = new ApolloClient({
   dataIdFromObject: o => o.id
@@ -22,7 +23,7 @@ const Root = () => {
             <Route path="/" component={AppComponent} exact />
             <Route path="/login" component={LoginForm} exact />
             <Route path="/signup" component={SignupForm} exact />
-            <Route path="/dashboard" component={DashBoard} exact />
+            <Route path="/dashboard" component={requireAuth(DashBoard)} exact />
           </Header>
         </Switch>
       </HashRouter>

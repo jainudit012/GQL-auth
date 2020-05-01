@@ -17,6 +17,10 @@ class LoginForm extends Component {
         if(!this.props.data.user && nextProps.data.user) this.props.history.push('/dashboard')
     }
 
+    componentDidMount(){
+        if(this.props.user) this.props.history.push('/dashboard')
+    }
+
     onFormSubmit({email, password}) {
         this.props.mutate({
             variables: {email, password},
