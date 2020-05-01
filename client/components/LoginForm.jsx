@@ -15,14 +15,17 @@ class LoginForm extends Component {
     onFormSubmit({email, password}) {
         this.props.mutate({
             variables: {email, password},
-            refetchQueries: [{ query: currentUserQuery}]
+            refetchQueries: [{ query: currentUserQuery}],
+            awaitRefetchQueries: true
         })
         .then(()=> {
             this.setState({errors: []})
         })
         .catch(err => {
-            const errors = err.graphQLErrors.map(err=>  err.message)
-            this.setState({errors})
+            if(err.graphQLErrors){
+                const errors = err.graphQLErrors.map(err=>  err.message)
+                this.setState({errors})
+            }
         })
     }
     render() {
