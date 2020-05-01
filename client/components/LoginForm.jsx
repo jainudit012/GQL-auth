@@ -12,11 +12,15 @@ class LoginForm extends Component {
             errors: []
         }
     }
+
+    componentWillUpdate(nextProps){
+        if(!this.props.data.user && nextProps.data.user) this.props.history.push('/dashboard')
+    }
+
     onFormSubmit({email, password}) {
         this.props.mutate({
             variables: {email, password},
-            refetchQueries: [{ query: currentUserQuery}],
-            awaitRefetchQueries: true
+            refetchQueries: [{ query: currentUserQuery}]
         })
         .then(()=> {
             this.setState({errors: []})
