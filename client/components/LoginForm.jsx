@@ -18,7 +18,7 @@ class LoginForm extends Component {
             refetchQueries: [{ query: currentUserQuery}]
         })
         .then(()=> {
-            this.setState({error: false})
+            this.setState({errors: []})
         })
         .catch(err => {
             const errors = err.graphQLErrors.map(err=>  err.message)
